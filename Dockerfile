@@ -18,5 +18,6 @@ RUN set -ex \
     && cmake .. \
     && make \
     && make install \
+    && echo "echo \"shared_preload_libraries = 'pg_jieba.so'\" >> /var/lib/postgresql/data/postgresql.conf" > /docker-entrypoint-initdb.d/load-lib.sh \
     && apk del .build-deps \
     && rm -rf /zhparser-master /scws-1.2.3 /cppjieba-45809955f5a345886ec3d49cbed3ec68ced70b1c /pg_jieba-master
